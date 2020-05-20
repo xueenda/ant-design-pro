@@ -12,14 +12,30 @@ const proSettings: DefaultSettings = {
   contentWidth: 'Fluid',
   fixedHeader: false,
   fixSiderbar: false,
-  colorWeak: false,
+  // colorWeak: true,
   menu: {
-    locale: true,
+    locale: false,
   },
-  title: 'Ant Design Pro',
+  title: 'Trading Interface',
   pwa: false,
   iconfontUrl: '',
 };
+
+
+// {
+//   "navTheme": "light",
+//   "primaryColor": "#1890ff",
+//   "layout": "sidemenu",
+//   "contentWidth": "Fluid",
+//   "fixedHeader": false,
+//   "fixSiderbar": false,
+//   "menu": {
+//     "locale": true
+//   },
+//   "title": "Ant Design Pro",
+//   "pwa": false,
+//   "iconfontUrl": ""
+// }
 
 export type { DefaultSettings };
 
