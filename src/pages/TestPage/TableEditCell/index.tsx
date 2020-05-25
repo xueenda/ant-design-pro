@@ -4,6 +4,7 @@ import { Table, Input, Button, Popconfirm, Form } from 'antd';
 import { connect } from 'umi';
 import { ModalState } from '../model';
 import { TradeItemDataType } from '../data.d';
+import { render } from 'ejs';
 
 const EditableContext = React.createContext<any>();
 
@@ -143,6 +144,15 @@ class EditableTable extends React.Component {
     };
   }
 
+  // componentDidMount() {
+  //   const { dispatch } = this.props;
+
+  //   console.log(this.props)
+  //   dispatch({
+  //     type: 'trade/getBlotter',
+  //   })
+  // }
+
   handleDelete = key => {
     const dataSource = [...this.state.dataSource];
     this.setState({ dataSource: dataSource.filter(item => item.key !== key) });
@@ -239,12 +249,29 @@ class EditableTable extends React.Component {
   }
 }
 
-const Applications: React.FC<ModalState> = (props) => {
-  const { list } = props
 
-  return (
-    <div className={styles.container}><div id="components-table-demo-edit-cell"><EditableTable list={list} /></div></div>
+class Applications extends React.Component {
+// class Applications: React.FC<ModalState> = (props) => {
+  // const { list } = props
+
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'trade/getBlotter',
+    })
+  }
+
+  render() {
+    const { list } = this.props;
+    return (
+    <div className={styles.container}><div id="components-table-demo-edit-cell"><EditableTable list = { list} /></div></div>
   )
+  }
+
 }
 
 export default connect(({ trade }: { trade: ModalState }) => ({ list: trade.list }))(Applications);

@@ -79,32 +79,32 @@ export default defineConfig({
               path: '/fixedincome',
               component: './TestPage',
             },
-            {
-              path: '/list',
-              icon: 'table',
-              name: 'Trade History',
-              routes: [
-                {
-                  name: 'table-list',
-                  icon: 'smile',
-                  path: '/list/table-list',
-                  component: './list/table-list',
-                }
-              ],
-            },
-            {
-              name: 'account',
-              icon: 'user',
-              path: '/account',
-              routes: [
-                {
-                  name: 'settings',
-                  icon: 'smile',
-                  path: '/account/settings',
-                  component: './account/settings',
-                },
-              ],
-            },
+            // {
+            //   path: '/list',
+            //   icon: 'table',
+            //   name: 'Trade History',
+            //   routes: [
+            //     {
+            //       name: 'table-list',
+            //       icon: 'smile',
+            //       path: '/list/table-list',
+            //       component: './list/table-list',
+            //     }
+            //   ],
+            // },
+            // {
+            //   name: 'account',
+            //   icon: 'user',
+            //   path: '/account',
+            //   routes: [
+            //     {
+            //       name: 'settings',
+            //       icon: 'smile',
+            //       path: '/account/settings',
+            //       component: './account/settings',
+            //     },
+            //   ],
+            // },
             {
               path: '/',
               redirect: '/fixedincome',

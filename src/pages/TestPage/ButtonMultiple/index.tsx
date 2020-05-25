@@ -6,6 +6,7 @@ import { ClickParam } from 'antd/es/menu';
 import { render } from "ejs";
 import { connect } from 'umi';
 import { ModalState } from '../model';
+import { any } from "prop-types";
 
 function handleMenuClick(param: ClickParam) {
   console.log("click", param);
@@ -23,31 +24,33 @@ const buttonStyle = {
   width: "100px"
 };
 
-const Applications: React.FC<ModalState> = (props) => {
+const Applications: React.FC<{onMessageSubmit: Function, onSocketClose: Function}> = (props) => {
 
-  const handleOnClick = () => {
-    const { dispatch } = props;
-    dispatch({
-      type: 'trade/getBlotter',
-    })
-  }
+  const {onMessageSubmit, onSocketClose} = props;
+
+//   const handleOnClick = () => {
+//     const { dispatch } = props;
+//     dispatch({
+//       type: 'trade/getBlotter',
+//     })
+//   }
 
   return (
     <div className={styles.container}>
       <div id="components-button-demo-multiple">
         <div>
-          <Button type="primary" style={buttonStyle} onClick={handleOnClick}>Get Blotter</Button>
-          <Button type="primary" style={buttonStyle} >Quote</Button>
-          <Button style={buttonStyle}>Fill</Button>
-          <Dropdown overlay={menu}>
+          {/* <Button type="primary" style={buttonStyle} onClick={handleOnClick}>Get Blotter</Button> */}
+          <Button type="primary" style={buttonStyle} onClick={onMessageSubmit} >Quote</Button>
+          <Button style={buttonStyle} onClick={ onSocketClose }>Fill</Button>
+          {/* <Dropdown overlay={menu}>
             <Button>
               Actions <DownOutlined />
             </Button>
-          </Dropdown>
+          </Dropdown> */}
         </div>
       </div>
     </div>
   );
 }
 
-export default connect(({ trade }: { trade: ModalState }) => ({ list: trade.list }))(Applications);
+export default Applications;
